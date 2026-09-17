@@ -1,0 +1,277 @@
+<pdf width="595.28" height="841.89" margin="0">
+  <setup>
+    <page-number format="page" />
+  </setup>
+
+  <style>
+    meta {
+      primary-color: #ECA872;
+      secondary-color: #A3C3B1;
+      text-color: #4A3E3D;
+      bg-light: #FDF8EF;
+      bg-neutral: #F4F6F0;
+      accent-pink: #F5B7B1;
+      accent-coral: #E78B75;
+      font-family: sans-serif;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+      background-color: #FDF8EF;
+    }
+
+    body {
+      font-family: sans-serif;
+      color: #4A3E3D;
+      font-size: 10pt;
+      line-height: 1.5;
+    }
+
+    /* Cover Styling */
+    .cover {
+      background-color: #F4F6F0;
+      height: 100%;
+      padding: 60px 40px;
+      box-sizing: border-box;
+    }
+
+    .cover-header {
+      border-bottom: 3px solid #ECA872;
+      padding-bottom: 20px;
+      margin-bottom: 40px;
+    }
+
+    .cover-title {
+      font-size: 28pt;
+      font-weight: bold;
+      color: #4A3E3D;
+      margin: 0 0 10px 0;
+    }
+
+    .cover-subtitle {
+      font-size: 14pt;
+      color: #A3C3B1;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .badge {
+      background-color: #ECA872;
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 9pt;
+      font-weight: bold;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    /* Page Layout */
+    .page {
+      padding: 40px;
+      box-sizing: border-box;
+    }
+
+    .section-title {
+      font-size: 16pt;
+      font-weight: bold;
+      color: #4A3E3D;
+      border-left: 5px solid #ECA872;
+      padding-left: 10px;
+      margin-top: 20px;
+      margin-bottom: 15px;
+    }
+
+    .card {
+      background-color: #FFFFFF;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: 1px solid #E8E8E8;
+    }
+
+    /* Color Palette Table */
+    .color-box {
+      width: 100%;
+      height: 35px;
+      border-radius: 6px;
+      margin-bottom: 5px;
+    }
+
+    /* Grid Layouts */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 10px;
+    }
+
+    /* Typography & Lists */
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .highlight-text {
+      color: #E78B75;
+      font-weight: bold;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      left: 40px;
+      right: 40px;
+      text-align: center;
+      font-size: 8pt;
+      color: #999999;
+      border-top: 1px solid #E0E0E0;
+      padding-top: 10px;
+    }
+  </style>
+
+  <!-- PAGE 1: COVER & OVERVIEW -->
+  <page>
+    <div class="cover">
+      <div class="badge">儿童情绪教育 AI 产品</div>
+      <div class="cover-header">
+        <h1 class="cover-title">《小狐的心情故事》</h1>
+        <h2 class="cover-subtitle">角色视觉设计与交互规范手册 (v1.0)</h2>
+      </div>
+
+      <div class="card" style="margin-top: 60px; background-color: #FFFFFF;">
+        <h3 style="margin-top:0; color:#ECA872;">文档目的与定位</h3>
+        <p>本手册旨在为《小狐的心情故事》（3-6岁儿童情绪教育AI产品）提供统一的视觉规范与交互设计基准。重点针对核心IP<b>“小狐”</b>进行极简低饱和二维卡通风格的形象定位，以便后续进行UI设计、Figma组件库搭建及Web Demo开发。</p>
+      </div>
+
+      <div class="grid-2" style="margin-top: 30px;">
+        <div class="card">
+          <h4 style="margin-top:0; color:#A3C3B1;">核心理念</h4>
+          <p style="font-size:9pt;">情绪可以出现，但行为需要选择。</p>
+        </div>
+        <div class="card">
+          <h4 style="margin-top:0; color:#A3C3B1;">设计原则</h4>
+          <p style="font-size:9pt;">少文字、大角色、强视觉引导；陪伴式体验，避免强说教。</p>
+        </div>
+      </div>
+    </div>
+  </page>
+
+  <!-- PAGE 2: CHARACTER DESIGN & PALETTE -->
+  <page>
+    <div class="page">
+      <div class="section-title">一、小狐（Little Fox）造型规范</div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4 style="color:#ECA872; margin-top:0;">1. 基础造型比例</h4>
+          <ul>
+            <li><b>头身比例：</b>1:1.5 至 1:2 大头小身体，增强幼态感与安全感。</li>
+            <li><b>线条风格：</b>全圆角设计，无尖锐棱角；采用极浅手绘线条或无描边扁平风格。</li>
+            <li><b>服饰特征：</b>穿戴极简鼠尾草绿小背心，增加生活亲和感。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h4 style="color:#ECA872; margin-top:0;">2. 面部与姿态规范</h4>
+          <ul>
+            <li><b>眼睛：</b>大圆眼带浅白高光，表情温和有神。</li>
+            <li><b>耳鼻：</b>耳朵呈圆润三角状，内耳粉色；小巧黑圆鼻子。</li>
+            <li><b>姿态：</b>常态呈双手微伸、身体微前倾的“倾听与拥抱”姿态。</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-title">二、色彩系统（莫兰迪低饱和色系）</div>
+      
+      <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+        <tr style="background-color: #F4F6F0;">
+          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #DDD;">应用部位</th>
+          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #DDD;">色彩名称</th>
+          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #DDD;">HEX 色值</th>
+          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #DDD;">设计心理学作用</th>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;"><b>身体主色</b></td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;">暖暖橙 (Warm Amber)</td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;"><span class="highlight-text">#ECA872</span></td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;">温暖、亲切、无攻击性</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;"><b>肚子/面颊</b></td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;">奶油米白 (Cream White)</td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;">#FDF8EF</td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;">干净、柔和，提升面部对比</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;"><b>服装服饰</b></td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;">鼠尾草绿 (Sage Green)</td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;">#A3C3B1</td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;">情绪平复、自然、安全感</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;"><b>腮红/强调</b></td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;">柔粉 (Dusty Pink)</td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;">#F5B7B1</td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;">表达同理心与温柔同理感</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;"><b>背景基调</b></td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;">暖灰绿 (Soft Neutral)</td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;">#F4F6F0</td>
+          <td style="padding: 8px; border-bottom: 1px solid #EEE;">保护儿童视力，减少视觉疲劳</td>
+        </tr>
+      </table>
+
+      <div class="footer">《小狐的心情故事》视觉设计规范手册 | 第 2 页</div>
+    </div>
+  </page>
+
+  <!-- PAGE 3: EMOTIONS & HOME PAGE LAYOUT -->
+  <page>
+    <div class="page">
+      <div class="section-title">三、AI 情绪与行为状态表达</div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4 style="color:#A3C3B1; margin-top:0;">1. 倾听/等待状态 (Idle)</h4>
+          <p style="font-size:9pt;"><b>表情：</b>眼睛微睁大，头部微微偏向一侧。<br/><b>动作：</b>双手叠于胸前，微弱呼吸起伏。<br/><b>场景：</b>孩子语音或点击回答时。</p>
+        </div>
+        <div class="card">
+          <h4 style="color:#A3C3B1; margin-top:0;">2. 共情/鼓励状态 (Empathetic)</h4>
+          <p style="font-size:9pt;"><b>表情：</b>眼弯成月牙状 (^^)，腮红加深。<br/><b>动作：</b>单手抚胸，身体微前倾。<br/><b>场景：</b>孩子成功识别情绪时给予正面反馈。</p>
+        </div>
+        <div class="card">
+          <h4 style="color:#A3C3B1; margin-top:0;">3. 思考/引导状态 (Thinking)</h4>
+          <p style="font-size:9pt;"><b>表情：</b>单眼微向上看，嘴巴呈微“O”型。<br/><b>动作：</b>食指抵下巴或指向上方画面。<br/><b>场景：</b>引导思考“小熊现在该怎么办？”。</p>
+        </div>
+        <div class="card">
+          <h4 style="color:#A3C3B1; margin-top:0;">4. 表达/讲述状态 (Speaking)</h4>
+          <p style="font-size:9pt;"><b>表情：</b>嘴巴带有2-3帧开关口型。<br/><b>动作：</b>双手作小幅度展开姿态。<br/><b>场景：</b>AI小狐播报语音引导词。</p>
+        </div>
+      </div>
+
+      <div class="section-title">四、首页 UI 重构布局规范</div>
+      
+      <div class="card" style="background-color: #F4F6F0;">
+        <ul style="font-size: 9.5pt;">
+          <li><b>背景场景：</b>极简二维森林一角，浅黄绿草丘，远景扁平化树木与微弱日光斑点。</li>
+          <li><b>角色居中：</b>小狐坐于草地中央，占屏幕高度 <b>45%-50%</b>，强视觉焦点。</li>
+          <li><b>文字压减：</b>顶部仅保留标题“小狐的心情故事”（色值 `#4A3E3D`），小狐头顶带气泡：“你好，我是小狐！”。</li>
+          <li><b>交互入口：</b>底部采用单一大按钮<b>“开始故事”</b>（圆角胶囊状，浅珊瑚粉 `#E78B75`，带有轻微呼吸浮动动效）。</li>
+        </ul>
+      </div>
+
+      <div class="footer">《小狐的心情故事》视觉设计规范手册 | 第 3 页</div>
+    </div>
+  </page>
+</pdf>
