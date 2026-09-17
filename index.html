@@ -1,277 +1,237 @@
-<pdf width="595.28" height="841.89" margin="0">
-  <setup>
-    <page-number format="page" />
-  </setup>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小狐的心情故事</title>
+    <style>
+        /* 全局低饱和色彩配置 */
+        :root {
+            --bg-color: #F4F6F0;       /* 柔和背景 */
+            --fox-orange: #ECA872;     /* 小狐主色 */
+            --fox-light: #FDF8EF;      /* 肚皮/面部 */
+            --vest-green: #A3C3B1;     /* 背心绿 */
+            --btn-coral: #E78B75;      /* 按钮珊瑚粉 */
+            --text-dark: #4A3E3D;      /* 深咖色文字 */
+        }
 
-  <style>
-    meta {
-      primary-color: #ECA872;
-      secondary-color: #A3C3B1;
-      text-color: #4A3E3D;
-      bg-light: #FDF8EF;
-      bg-neutral: #F4F6F0;
-      accent-pink: #F5B7B1;
-      accent-coral: #E78B75;
-      font-family: sans-serif;
-    }
+        * {
+            box-sizing: border-box;
+            user-select: none; /* 防止儿童误选文字 */
+        }
 
-    @page {
-      size: A4;
-      margin: 0;
-      background-color: #FDF8EF;
-    }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
 
-    body {
-      font-family: sans-serif;
-      color: #4A3E3D;
-      font-size: 10pt;
-      line-height: 1.5;
-    }
+        /* 模拟儿童平板/绘本视窗 */
+        #game-container {
+            width: 100%;
+            max-width: 900px;
+            height: 100vh;
+            max-height: 600px;
+            background: #FDF8EF;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
 
-    /* Cover Styling */
-    .cover {
-      background-color: #F4F6F0;
-      height: 100%;
-      padding: 60px 40px;
-      box-sizing: border-box;
-    }
+        /* 顶部极简标题 */
+        .title {
+            font-size: 28px;
+            color: var(--text-dark);
+            font-weight: bold;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
 
-    .cover-header {
-      border-bottom: 3px solid #ECA872;
-      padding-bottom: 20px;
-      margin-bottom: 40px;
-    }
+        /* 说话气泡 */
+        .speech-bubble {
+            background: white;
+            border-radius: 20px;
+            padding: 15px 25px;
+            font-size: 20px;
+            color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
 
-    .cover-title {
-      font-size: 28pt;
-      font-weight: bold;
-      color: #4A3E3D;
-      margin: 0 0 10px 0;
-    }
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: white transparent;
+        }
 
-    .cover-subtitle {
-      font-size: 14pt;
-      color: #A3C3B1;
-      font-weight: bold;
-      margin: 0;
-    }
+        /* 中央大角色：小狐 (SVG二维绘制) */
+        .character-area {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
 
-    .badge {
-      background-color: #ECA872;
-      color: #FFFFFF;
-      padding: 4px 12px;
-      border-radius: 12px;
-      font-size: 9pt;
-      font-weight: bold;
-      display: inline-block;
-      margin-bottom: 15px;
-    }
+        .fox-svg {
+            width: 220px;
+            height: 220px;
+            transition: transform 0.2s ease;
+        }
 
-    /* Page Layout */
-    .page {
-      padding: 40px;
-      box-sizing: border-box;
-    }
+        /* 点击角色时的互动动效 */
+        .fox-svg:active {
+            transform: scale(0.95) rotate(-3deg);
+        }
 
-    .section-title {
-      font-size: 16pt;
-      font-weight: bold;
-      color: #4A3E3D;
-      border-left: 5px solid #ECA872;
-      padding-left: 10px;
-      margin-top: 20px;
-      margin-bottom: 15px;
-    }
+        /* 底部“开始故事”胶囊大按钮 */
+        .start-btn {
+            background-color: var(--btn-coral);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 16px 60px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 00px rgba(231, 139, 117, 0.4);
+            margin-bottom: 20px;
+            animation: float 2s infinite ease-in-out;
+            transition: transform 0.1s;
+        }
 
-    .card {
-      background-color: #FFFFFF;
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 15px;
-      border: 1px solid #E8E8E8;
-    }
+        .start-btn:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
 
-    /* Color Palette Table */
-    .color-box {
-      width: 100%;
-      height: 35px;
-      border-radius: 6px;
-      margin-bottom: 5px;
-    }
+        /* 呼吸浮动动画 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+    </style>
+</head>
+<body>
 
-    /* Grid Layouts */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-    }
+<div id="game-container">
+    <!-- 1. 顶部标题 -->
+    <div class="title" id="main-title">小狐的心情故事</div>
 
-    .grid-4 {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      gap: 10px;
-    }
-
-    /* Typography & Lists */
-    ul {
-      margin: 0;
-      padding-left: 18px;
-    }
-
-    li {
-      margin-bottom: 6px;
-    }
-
-    .highlight-text {
-      color: #E78B75;
-      font-weight: bold;
-    }
-
-    .footer {
-      position: absolute;
-      bottom: 20px;
-      left: 40px;
-      right: 40px;
-      text-align: center;
-      font-size: 8pt;
-      color: #999999;
-      border-top: 1px solid #E0E0E0;
-      padding-top: 10px;
-    }
-  </style>
-
-  <!-- PAGE 1: COVER & OVERVIEW -->
-  <page>
-    <div class="cover">
-      <div class="badge">儿童情绪教育 AI 产品</div>
-      <div class="cover-header">
-        <h1 class="cover-title">《小狐的心情故事》</h1>
-        <h2 class="cover-subtitle">角色视觉设计与交互规范手册 (v1.0)</h2>
-      </div>
-
-      <div class="card" style="margin-top: 60px; background-color: #FFFFFF;">
-        <h3 style="margin-top:0; color:#ECA872;">文档目的与定位</h3>
-        <p>本手册旨在为《小狐的心情故事》（3-6岁儿童情绪教育AI产品）提供统一的视觉规范与交互设计基准。重点针对核心IP<b>“小狐”</b>进行极简低饱和二维卡通风格的形象定位，以便后续进行UI设计、Figma组件库搭建及Web Demo开发。</p>
-      </div>
-
-      <div class="grid-2" style="margin-top: 30px;">
-        <div class="card">
-          <h4 style="margin-top:0; color:#A3C3B1;">核心理念</h4>
-          <p style="font-size:9pt;">情绪可以出现，但行为需要选择。</p>
-        </div>
-        <div class="card">
-          <h4 style="margin-top:0; color:#A3C3B1;">设计原则</h4>
-          <p style="font-size:9pt;">少文字、大角色、强视觉引导；陪伴式体验，避免强说教。</p>
-        </div>
-      </div>
+    <!-- 2. AI小狐对白气泡 -->
+    <div class="speech-bubble" id="dialogue" onclick="speak()">
+        你好！我是小狐 🦊（点我听声音）
     </div>
-  </page>
 
-  <!-- PAGE 2: CHARACTER DESIGN & PALETTE -->
-  <page>
-    <div class="page">
-      <div class="section-title">一、小狐（Little Fox）造型规范</div>
-
-      <div class="grid-2">
-        <div class="card">
-          <h4 style="color:#ECA872; margin-top:0;">1. 基础造型比例</h4>
-          <ul>
-            <li><b>头身比例：</b>1:1.5 至 1:2 大头小身体，增强幼态感与安全感。</li>
-            <li><b>线条风格：</b>全圆角设计，无尖锐棱角；采用极浅手绘线条或无描边扁平风格。</li>
-            <li><b>服饰特征：</b>穿戴极简鼠尾草绿小背心，增加生活亲和感。</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h4 style="color:#ECA872; margin-top:0;">2. 面部与姿态规范</h4>
-          <ul>
-            <li><b>眼睛：</b>大圆眼带浅白高光，表情温和有神。</li>
-            <li><b>耳鼻：</b>耳朵呈圆润三角状，内耳粉色；小巧黑圆鼻子。</li>
-            <li><b>姿态：</b>常态呈双手微伸、身体微前倾的“倾听与拥抱”姿态。</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="section-title">二、色彩系统（莫兰迪低饱和色系）</div>
-      
-      <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-        <tr style="background-color: #F4F6F0;">
-          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #DDD;">应用部位</th>
-          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #DDD;">色彩名称</th>
-          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #DDD;">HEX 色值</th>
-          <th style="padding: 8px; text-align: left; border-bottom: 1px solid #DDD;">设计心理学作用</th>
-        </tr>
-        <tr>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;"><b>身体主色</b></td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;">暖暖橙 (Warm Amber)</td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;"><span class="highlight-text">#ECA872</span></td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;">温暖、亲切、无攻击性</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;"><b>肚子/面颊</b></td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;">奶油米白 (Cream White)</td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;">#FDF8EF</td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;">干净、柔和，提升面部对比</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;"><b>服装服饰</b></td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;">鼠尾草绿 (Sage Green)</td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;">#A3C3B1</td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;">情绪平复、自然、安全感</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;"><b>腮红/强调</b></td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;">柔粉 (Dusty Pink)</td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;">#F5B7B1</td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;">表达同理心与温柔同理感</td>
-        </tr>
-        <tr>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;"><b>背景基调</b></td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;">暖灰绿 (Soft Neutral)</td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;">#F4F6F0</td>
-          <td style="padding: 8px; border-bottom: 1px solid #EEE;">保护儿童视力，减少视觉疲劳</td>
-        </tr>
-      </table>
-
-      <div class="footer">《小狐的心情故事》视觉设计规范手册 | 第 2 页</div>
+    <!-- 3. 二维卡通小狐角色（大头小身体、低饱和度） -->
+    <div class="character-area" onclick="foxReact()">
+        <svg class="fox-svg" viewBox="0 0 200 200" id="fox-character">
+            <!-- 身体/背心 -->
+            <path d="M70,130 C70,110 130,110 130,130 L140,180 C140,190 60,190 60,180 Z" fill="#A3C3B1" />
+            <!-- 大脑袋 -->
+            <circle cx="100" cy="90" r="55" fill="#ECA872" />
+            <!-- 耳朵 左/右 -->
+            <path d="M55,55 L40,15 L75,45 Z" fill="#ECA872" />
+            <path d="M55,55 L40,15 L75,45 Z" fill="#F5B7B1" transform="scale(0.8) translate(12,10)" />
+            <path d="M145,55 L160,15 L125,45 Z" fill="#ECA872" />
+            <path d="M145,55 L160,15 L125,45 Z" fill="#F5B7B1" transform="scale(0.8) translate(28,10)" />
+            <!-- 脸颊白色花纹 -->
+            <ellipse cx="80" cy="105" rx="20" ry="15" fill="#FDF8EF" />
+            <ellipse cx="120" cy="105" rx="20" ry="15" fill="#FDF8EF" />
+            <!-- 眼睛 -->
+            <circle cx="80" cy="85" r="5" fill="#4A3E3D" />
+            <circle cx="120" cy="85" r="5" fill="#4A3E3D" />
+            <circle cx="82" cy="83" r="2" fill="white" />
+            <circle cx="122" cy="83" r="2" fill="white" />
+            <!-- 腮红 -->
+            <circle cx="70" cy="95" r="7" fill="#F5B7B1" opacity="0.6" />
+            <circle cx="130" cy="95" r="7" fill="#F5B7B1" opacity="0.6" />
+            <!-- 鼻子与嘴巴 -->
+            <circle cx="100" cy="95" r="4" fill="#4A3E3D" />
+            <path d="M95,102 Q100,107 105,102" stroke="#4A3E3D" stroke-width="2" fill="none" id="fox-mouth" />
+        </svg>
     </div>
-  </page>
 
-  <!-- PAGE 3: EMOTIONS & HOME PAGE LAYOUT -->
-  <page>
-    <div class="page">
-      <div class="section-title">三、AI 情绪与行为状态表达</div>
+    <!-- 4. 交互大按钮 -->
+    <button class="start-btn" id="action-btn" onclick="nextStep()">开始故事</button>
+</div>
 
-      <div class="grid-2">
-        <div class="card">
-          <h4 style="color:#A3C3B1; margin-top:0;">1. 倾听/等待状态 (Idle)</h4>
-          <p style="font-size:9pt;"><b>表情：</b>眼睛微睁大，头部微微偏向一侧。<br/><b>动作：</b>双手叠于胸前，微弱呼吸起伏。<br/><b>场景：</b>孩子语音或点击回答时。</p>
-        </div>
-        <div class="card">
-          <h4 style="color:#A3C3B1; margin-top:0;">2. 共情/鼓励状态 (Empathetic)</h4>
-          <p style="font-size:9pt;"><b>表情：</b>眼弯成月牙状 (^^)，腮红加深。<br/><b>动作：</b>单手抚胸，身体微前倾。<br/><b>场景：</b>孩子成功识别情绪时给予正面反馈。</p>
-        </div>
-        <div class="card">
-          <h4 style="color:#A3C3B1; margin-top:0;">3. 思考/引导状态 (Thinking)</h4>
-          <p style="font-size:9pt;"><b>表情：</b>单眼微向上看，嘴巴呈微“O”型。<br/><b>动作：</b>食指抵下巴或指向上方画面。<br/><b>场景：</b>引导思考“小熊现在该怎么办？”。</p>
-        </div>
-        <div class="card">
-          <h4 style="color:#A3C3B1; margin-top:0;">4. 表达/讲述状态 (Speaking)</h4>
-          <p style="font-size:9pt;"><b>表情：</b>嘴巴带有2-3帧开关口型。<br/><b>动作：</b>双手作小幅度展开姿态。<br/><b>场景：</b>AI小狐播报语音引导词。</p>
-        </div>
-      </div>
+<script>
+    let step = 0;
 
-      <div class="section-title">四、首页 UI 重构布局规范</div>
-      
-      <div class="card" style="background-color: #F4F6F0;">
-        <ul style="font-size: 9.5pt;">
-          <li><b>背景场景：</b>极简二维森林一角，浅黄绿草丘，远景扁平化树木与微弱日光斑点。</li>
-          <li><b>角色居中：</b>小狐坐于草地中央，占屏幕高度 <b>45%-50%</b>，强视觉焦点。</li>
-          <li><b>文字压减：</b>顶部仅保留标题“小狐的心情故事”（色值 `#4A3E3D`），小狐头顶带气泡：“你好，我是小狐！”。</li>
-          <li><b>交互入口：</b>底部采用单一大按钮<b>“开始故事”</b>（圆角胶囊状，浅珊瑚粉 `#E78B75`，带有轻微呼吸浮动动效）。</li>
-        </ul>
-      </div>
+    // 状态切换与游戏流程逻辑
+    function nextStep() {
+        step++;
+        const dialogue = document.getElementById('dialogue');
+        const btn = document.getElementById('action-btn');
+        const title = document.getElementById('main-title');
 
-      <div class="footer">《小狐的心情故事》视觉设计规范手册 | 第 3 页</div>
-    </div>
-  </page>
-</pdf>
+        if (step === 1) {
+            title.innerText = "场景一：幼儿园的小球";
+            dialogue.innerText = "下午，小熊和小兔在玩球，小熊也想玩...";
+            btn.innerText = "小熊怎么了？";
+            speakText("下午，小熊和小兔在玩球，小熊也想玩");
+        } else if (step === 2) {
+            dialogue.innerText = "小熊没有说出来，推了小兔一下！他感觉很委屈。";
+            btn.innerText = "帮小熊表达感受";
+            speakText("小熊没有说出来，推了小兔一下！他感觉很委屈。");
+        } else if (step === 3) {
+            dialogue.innerText = "跟小狐一起说：『我感到生气，因为我也想玩球。』";
+            btn.innerText = "重新开始故事";
+            speakText("跟小狐一起说：我感到生气，因为我也想玩球。");
+        } else {
+            step = 0;
+            title.innerText = "小狐的心情故事";
+            dialogue.innerText = "你好！我是小狐 🦊（点我听声音）";
+            btn.innerText = "开始故事";
+        }
+    }
+
+    // 语音朗读功能（模拟AI陪伴发声，适合幼童）
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'zh-CN';
+            utterance.rate = 0.9; // 稍微放慢语速，适合幼儿
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+
+    function speak() {
+        const text = document.getElementById('dialogue').innerText;
+        speakText(text);
+    }
+
+    // 点击小狐触发肢体反馈
+    function foxReact() {
+        const dialogue = document.getElementById('dialogue');
+        dialogue.style.transform = 'scale(1.1)';
+        setTimeout(() => dialogue.style.transform = 'scale(1)', 200);
+        speakText("我是你的心情好朋友小狐！");
+    }
+</script>
+
+</body>
+</html>
